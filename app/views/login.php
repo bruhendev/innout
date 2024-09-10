@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt_BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/icofont.min.css">
     <link rel="stylesheet" href="assets/css/login.css">
-<title>In n` Out</title>
+    <title>In n` Out</title>
 </head>
+
 <body>
     <form class="form-login" action="#" method="post">
         <div class="login-card card">
@@ -23,11 +25,17 @@
                 <?php include(TEMPLATE_PATH . '/messages.php'); ?>
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="text" name="email" value="<?= $email ?? "" ?>" id="email" placeholder="Informe o e-meial" class="form-control">
+                    <input type="text" name="email" value="<?= $email ?? "" ?>" id="email" placeholder="Informe o e-meial" class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>">
+                    <div class="invalid-feedback">
+                        <?= isset($errors['email']) ? $exception->get('email') : '' ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input type="text" name="password" id="password" placeholder="Informe a senha" class="form-control">
+                    <input type="text" name="password" id="password" placeholder="Informe a senha" class="form-control <?= isset($errors['password']) ? 'is-invalid' : '' ?>">
+                    <div class="invalid-feedback">
+                        <?= isset($errors['password']) ? $exception->get('password') : '' ?>
+                    </div>
                 </div>
             </div>
             <div class="card-footer">
@@ -36,4 +44,5 @@
         </div>
     </form>
 </body>
+
 </html>
