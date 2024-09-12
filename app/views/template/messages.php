@@ -1,6 +1,6 @@
 <?php
 $errors = [];
-if (isset($message)) {
+if ($exception) {
     $message = [
         'type' => 'error',
         'message' => $exception->getMessage()

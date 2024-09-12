@@ -2,6 +2,8 @@
 session_start();
 requireValidSession();
 
+$exception = null;
+
 $date = (new DateTime())->getTimestamp();
 $dateTime = new DateTime("@$date"); // Cria um objeto DateTime a partir do timestamp
 
@@ -12,4 +14,4 @@ $formatter = new IntlDateFormatter(
     'America/Sao_Paulo' // Fuso horário
 );
 
-loadTemplateView('day_records', ['today' => $formatter->format($dateTime)]);
+loadTemplateView('day_records', ['today' => $formatter->format($dateTime), 'exception' => $exception]);
