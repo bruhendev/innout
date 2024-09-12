@@ -7,5 +7,6 @@ RUN apt-get update \
         php8.3-mysql \
         php8.3-sqlite3 \
         php8.3-xdebug \
+        php-intl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
