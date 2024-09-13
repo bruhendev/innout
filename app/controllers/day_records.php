@@ -1,6 +1,7 @@
 <?php
 session_start();
 requireValidSession();
+loadModel('WorkingHours');
 
 $exception = null;
 
@@ -14,4 +15,11 @@ $formatter = new IntlDateFormatter(
     'America/Sao_Paulo' // Fuso horário
 );
 
-loadTemplateView('day_records', ['today' => $formatter->format($dateTime), 'exception' => $exception]);
+$user = $_SESSION['user'];
+$records = WorkingHours::loadFromUserAndDate($user->id, date('Y-m-d'));
+
+loadTemplateView('day_records', [
+    'today' => $formatter->format($dateTime),
+    'exception' => $exception,
+    'records' => $records
+]);
