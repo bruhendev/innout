@@ -1,7 +1,7 @@
 <?php
 
-loadModel('Login');
 session_start();
+loadModel('Login');
 $exception = null;
 
 if (count($_POST) > 0) {
