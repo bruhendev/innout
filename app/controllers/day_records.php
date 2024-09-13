@@ -15,11 +15,7 @@ $formatter = new IntlDateFormatter(
     'America/Sao_Paulo' // Fuso horário
 );
 
-$user = $_SESSION['user'];
-$records = WorkingHours::loadFromUserAndDate($user->id, date('Y-m-d'));
-
 loadTemplateView('day_records', [
     'today' => $formatter->format($dateTime),
     'exception' => $exception,
-    'records' => $records
 ]);
